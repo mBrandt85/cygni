@@ -3,15 +3,20 @@ import { useHistory } from 'react-router-dom'
 import {
   Box,
   Container,
-  Divider,
   Typography,
   IconButton,
   Paper,
-  InputBase
+  InputBase,
+  List,
+  ListItem,
+  ListItemText,
+  ListSubheader,
+  ListItemSecondaryAction
 } from '@material-ui/core'
 import {
   Search as SearchIcon,
-  Clear as ClearIcon
+  Clear as ClearIcon,
+  Delete as DeleteIcon
 } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -84,11 +89,21 @@ export default function Search() {
             </IconButton>
           </Paper>
 
-          <Divider />
+          {artists.length > 0 && <Paper>
+            <List component="div" subheader={<ListSubheader disableSticky>Search History</ListSubheader>}>
+              {artists.map(({ mbid, name }) => (
+                <ListItem key={mbid} button onClick={() => history.push(`/artist/${mbid}`)}>
+                  <ListItemText primary={name} />
 
-          <Typography className={styles.history} variant="subtitle2" component="h3" gutterBottom>
-            Search history
-          </Typography>
+                  <ListItemSecondaryAction>
+                    <IconButton onClick={() => deleteArtist(mbid)} edge="end" aria-label="delete">
+                      <DeleteIcon color="error" />
+                    </IconButton>
+                  </ListItemSecondaryAction>
+                </ListItem>
+              ))}
+            </List>
+          </Paper>}
         </Container>
       </Box>
     </Page>

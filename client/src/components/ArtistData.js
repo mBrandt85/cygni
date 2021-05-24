@@ -16,6 +16,7 @@ import {
   Link as LinkIcon
 } from '@material-ui/icons'
 import { grey } from '@material-ui/core/colors'
+import Flag from 'react-world-flags'
 
 const useStyles = makeStyles(theme => ({
   gridItem: {
@@ -51,10 +52,13 @@ const useStyles = makeStyles(theme => ({
   albumNoImageIcon: {
     marginBottom: theme.spacing(1),
     fontSize: 50
+  },
+  flag: {
+    marginLeft: theme.spacing(1) 
   }
 }))
 
-export default function ArtistData({ data: { mbid, name, lifeSpan, description, albums, officialHomepage, wikipediaHomepage }}) {
+export default function ArtistData({ data: { mbid, name, lifeSpan, country, description, albums, officialHomepage, wikipediaHomepage }}) {
   const styles = useStyles()
 
   let date = new Date(lifeSpan.begin).getFullYear()
@@ -66,9 +70,12 @@ export default function ArtistData({ data: { mbid, name, lifeSpan, description, 
         <Paper className={styles.gridItem}>
           <Typography component="h1" variant="h5">
             {name}
+
             <Typography className={styles.lifeSpan} component="span" color="textSecondary" variant="subtitle1">
               ({date})
             </Typography>
+            
+            {!!country && <Flag code={country.toLowerCase()} height="16" className={styles.flag} />}
           </Typography>
 
           <Divider className={styles.bodyDivider} />
@@ -112,10 +119,10 @@ export default function ArtistData({ data: { mbid, name, lifeSpan, description, 
         <Divider light />
       </Grid>}
 
-      {albums.sort((a, b) => a.releaseDate > b.releaseDate ? 1 : -1).map(({ id, title, releaseDate, image }) => (    
+      {albums.sort((a, b) => a.releaseDate > b.releaseDate ? 1 : -1).map(({ id, title, releaseDate, thumbnail }) => (    
         <Grid key={id} item xs={6} sm={4} md={3}>
-          <Paper className={styles.albumItem} style={image && { backgroundImage: `url(${image})` }}>
-            {!image && <Box className={styles.albumNoImage}>
+          <Paper className={styles.albumItem} style={thumbnail && { backgroundImage: `url(${thumbnail})` }}>
+            {!thumbnail && <Box className={styles.albumNoImage}>
               <WarningIcon color="error" className={styles.albumNoImageIcon} />
 
               <Typography component="h6" color="error" variant="body2">

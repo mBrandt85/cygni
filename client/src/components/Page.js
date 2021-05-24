@@ -10,7 +10,7 @@ export default function Page({ children, title = 'Cygni Hemuppgift' }) {
     <motion.main
       initial={{
         opacity: 0,
-        y: 50
+        y: 100
       }}
       animate={{
         opacity: 1,

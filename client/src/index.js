@@ -6,21 +6,22 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from '@material-ui/core/styles'
 
 import theme from './util/theme'
-import State from './state'
+import State, { useArtist } from './state'
 import Search from './routes/Search'
 import Artist from './routes/Artist'
 
 function App() {
+  const { init } = useArtist()
   const location = useLocation()
 
-  return (
+  return init ? (
     <AnimatePresence exitBeforeEnter>
       <Switch location={location} key={location.pathname}>
         <Route exact path='/' component={Search} />
         <Route path='/artist/:id' component={Artist} />
       </Switch>
     </AnimatePresence>
-  )
+  ) : null
 }
 
 ReactDOM.render(

@@ -1,19 +1,39 @@
-import { createContext, useContext, useReducer } from 'react'
+import { createContext, useContext, useEffect, useReducer } from 'react'
 
 const Context = createContext()
 
 function Reducer(state, action) {
   switch (action.type) {
-    case 'CREATE_ARTIST':
+    case 'INIT':
       return {
         ...state,
-        artists: [action.artist, ...state.artists]
+        init: true
+      }
+
+    case 'SET_ARTISTS':
+      return {
+        ...state,
+        artists: action.artists
+      }
+
+    case 'CREATE_ARTIST':
+      const createArtists = [action.artist, ...state.artists]
+
+      localStorage.setItem('artists', JSON.stringify(createArtists))
+
+      return {
+        ...state,
+        artists: createArtists
       }
 
     case 'DELETE_ARTIST':
+      const deleteArtists = state.artists.filter(artist => artist.mbid !== action.mbid)
+
+      localStorage.setItem('artists', JSON.stringify(deleteArtists))
+
       return {
         ...state,
-        artists: state.artists.filter(artist => artist.mbid !== action.mbid)
+        artists: deleteArtists
       }
 
     default:
@@ -25,6 +45,7 @@ function Reducer(state, action) {
 
 export default function Artist({ children }) {
   const [state, dispatch] = useReducer(Reducer, {
+    init: false,
     artists: []
   })
 
@@ -37,10 +58,26 @@ export default function Artist({ children }) {
 
   const deleteArtist = mbid => dispatch({
     type: 'DELETE_ARTIST',
-    id
+    mbid
   })
 
+  const loadLocalStorage = () => {
+    const localData = JSON.parse(localStorage.getItem('artists'))
+    if (localData) {
+      let artists = []
+      localData && localData.map(i => artists = [...artists, i])
+      dispatch({
+        type: 'SET_ARTISTS',
+        artists
+      })
+    }
+    dispatch({ type: 'INIT' })
+  }
+
+  useEffect(() => loadLocalStorage(), [])
+
   return <Context.Provider value={{
+    init: state.init,
     artists: state.artists,
     createArtist,
     deleteArtist
