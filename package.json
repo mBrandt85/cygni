@@ -4,7 +4,7 @@
   "description": "BackendMashup",
   "main": "index.js",
   "scripts": {
-    "start": "set NODE_ENV=production&&node index.js",
+    "start": "NODE_ENV=production node index.js",
     "build": "npm run build --prefix client",
     "client-install": "npm install --prefix client",
     "dev": "concurrently \"nodemon .\" \"npm run dev --prefix client\""
