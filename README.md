@@ -2,12 +2,12 @@
 
 Express server in the backend, fetching artist data fom MusicBrainz via api route's MBID parameters. Fetching additional data from Wikipedia and album images from CoverArtArchive.
 
-React SPA in the frontend, served by Express in Production. Displaying results and saving search history in localStorage to avoid to many unnecessary requests, and loading time.
+React SPA in the frontend, served by Express in Production. Displaying results and saving search history in localStorage to avoid to unnecessary requests.
 
 ## Setup
 
-Application is written in Node.js 14.15.5.  
-Node.js download page: **https://nodejs.org/en/download/**
+Application requires Node.js.  
+Download latest stable verion here: **https://nodejs.org/en/download/**
 
 ### Installing dependencies
 
