@@ -1,6 +1,6 @@
 # Cygni Hemuppgift
 
-A so far simple Epxress app in the backend. 
+Express server in the backend, fetching artist data fom MusicBrainz via api route's MBID parameters. Fetching additional data from Wikipedia and album images from CoverArtArchive.
 
 ## Setup
 
