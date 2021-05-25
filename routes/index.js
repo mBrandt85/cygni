@@ -4,8 +4,10 @@ const artist = require('./artist')
 
 router.get('/', async (req, res) => {
   res.status(200).json({
-    hello: "World!",
-    process: process.pid
+    status: 200,
+    process: process.pid,
+    error: null,
+    data: 'Cygni'
   })
 })
 

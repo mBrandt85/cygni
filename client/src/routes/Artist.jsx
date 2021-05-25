@@ -68,7 +68,7 @@ export default function Artist() {
   if (loading) return <FetchLoading />
 
   return (
-    <Page key="artist" title="Artist">
+    <Page key="artist" title={artist.data ? artist.data.name : 'Error'}>
       <Box my={2}>
         <Container maxWidth="lg">
           <Box className={styles.action}>

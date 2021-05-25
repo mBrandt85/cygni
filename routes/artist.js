@@ -14,15 +14,13 @@ module.exports = {
 
       const albums = await Promise.all(mbData['release-groups'].filter(({ ['primary-type']: type }) => type === 'Album').map(async ({ id, title, ['first-release-date']: releaseDate }) => {
         try {
-          let image
-          let thumbnail
+          let image = null
+          let thumbnail = null
           const imageRes = await fetch(`http://coverartarchive.org/release-group/${id}`)
           if (imageRes.status === 200) {
             const imageData = await imageRes.json()
             image = imageData && imageData.images[0].image
             thumbnail = imageData && imageData.images[0].thumbnails.small
-          } else {
-            image = null
           }
 
           return {
@@ -64,7 +62,7 @@ module.exports = {
       res.status(200).json(result)
     } catch (error) {
       console.log(error)
-      res.status(400).json(error.message)
+      res.status(400).json(error)
     }
   }
 }
