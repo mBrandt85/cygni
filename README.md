@@ -2,6 +2,8 @@
 
 Express server in the backend, fetching artist data fom MusicBrainz via api route's MBID parameters. Fetching additional data from Wikipedia and album images from CoverArtArchive.
 
+React SPA in the frontend, served by Express in Production. Displaying results and saving search history in localStorage to avoid to many unnecessary requests, and loading time.
+
 ## Setup
 
 ### Installing dependencies
@@ -40,8 +42,4 @@ Server app serves client bundle at /.
 
 App runs with Node.js built in Cluster module. 
 
-nodejs.org
-
-> A single instance of Node.js runs in a single thread. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
-
-For more scalability options, setup load balancing in Nginx. Upgrade server plan.
+For more scalability options, setup load balancing in e.g. Nginx or PM2 (Linux). Maybe the most important, upgrade server plan.
