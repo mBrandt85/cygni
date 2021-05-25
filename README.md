@@ -38,7 +38,7 @@ Server app serves client bundle at **http://localhost:5000**.
 
 ## API endpoints
 
-**/api/artist/:id** (**:id** = Valid MBID!)
+**http://localhost:5000/api/artist/:id** (**:id** = Valid MBID!)
 
 ## Scalability
 
