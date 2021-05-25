@@ -1,3 +1,4 @@
+import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, useLocation, Switch, Route } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
@@ -25,15 +26,17 @@ function App() {
 }
 
 ReactDOM.render(
-  <BrowserRouter>
-    <HelmetProvider>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <State>
-          <App />
-        </State>
-      </ThemeProvider>
-    </HelmetProvider>
-  </BrowserRouter>,
-  document.querySelector('#root'),
+  <React.StrictMode>
+    <BrowserRouter>
+      <HelmetProvider>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <State>
+            <App />
+          </State>
+        </ThemeProvider>
+      </HelmetProvider>
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById('root')
 )

@@ -8,9 +8,6 @@ module.exports = {
       })
       if (mbDataRes.status !== 200) throw new Error('Invalid MBID')
       const mbData = await mbDataRes.json()
-      
-      const wikipedia = mbData.relations.filter(({ type }) => type === 'wikipedia')
-      wikipedia.length > 0 && console.log(wikipedia)
 
       const wdID = mbData.relations.filter(({ type }) => type === 'wikidata')[0].url.resource.split('/').pop()
       const officialHomepage = mbData.relations.filter(({ type }) => type === 'official homepage')
