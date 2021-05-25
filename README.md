@@ -6,6 +6,9 @@ React SPA in the frontend, served by Express in Production. Displaying results a
 
 ## Setup
 
+Application is written in Node.js 14.15.5.  
+Node.js download page: https://nodejs.org/en/download/
+
 ### Installing dependencies
 
 From root folder.
@@ -13,16 +16,15 @@ From root folder.
 1. npm install
 1. npm run client-install
 
-Application will by default run on http://localhost:5000  
-Change port in .env file in the root folder.
-
 ### Run development server
 
 From root folder.
 
 1. npm run dev
 
-Runs concrurrently server app and client app in dev mode
+Runs concrurrently server app and client app in dev mode.  
+Backend: **http://localhost:5000**  
+Frontend: **http://localhost:3000**  
 
 ### Build client bundle and start production server
 
@@ -32,11 +34,11 @@ From root folder.
 1. npm start
 
 Runs server.  
-Server app serves client bundle at /.
+Server app serves client bundle at **http://localhost:5000**.
 
 ## API endpoints
 
-/api/artists/:id - :id = Valid MBID
+**/api/artist/:id** (:id = Valid MBID!)
 
 ## Scalability
 
