@@ -16,17 +16,17 @@ HOST = "http://localhost"
 
 `npm install`
 
-#### Run unit tests
-
-`npm run test`
-
-*Server needs to run for testing!*
-
 #### Run development server (live-reload)
 
 `npm run dev`
 
 Server runs at **http://localhost:3000** (as default)
+
+#### Run unit tests
+
+`npm run test`
+
+*Server needs to run for testing!*
 
 #### Start production server
 
