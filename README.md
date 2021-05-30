@@ -20,6 +20,8 @@ HOST = "http://localhost"
 
 `npm run test`
 
+*Server needs to run for testing!*
+
 #### Run development server (live-reload)
 
 `npm run dev`
