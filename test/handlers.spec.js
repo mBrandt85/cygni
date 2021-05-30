@@ -1,5 +1,5 @@
 require('dotenv').config()
-const host = process.env.HOST
+const host = `${process.env.HOST}:${process.env.PORT}`
 const expect = require('chai').expect
 const { httpRequest, httpResponse } = require('../lib/handlers')
 

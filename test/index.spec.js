@@ -4,7 +4,7 @@ const chaiHttp = require('chai-http')
 const expect = chai.expect
 
 chai.use(chaiHttp)
-const request = chai.request(process.env.HOST)
+const request = chai.request(`${process.env.HOST}:${process.env.PORT}`)
 
 describe('/index.js', () => {
   it('GET /api', () => {
