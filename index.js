@@ -5,8 +5,10 @@ const app = module.export = express()
 
 // Load-balancing with Node Cluster built in magic to make singlethread into multithread.
 if (cluster.isMaster) {
-  console.log(`> ${process.env.HOST}:${process.env.PORT}`)
-  console.log(`-> Master PID: ${process.pid}`)
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(`> ${process.env.HOST}:${process.env.PORT}`)
+    console.log(`-> Master PID: ${process.pid}`)
+  }
 
   // Start 1 worker process for each CPU
   for (let i = 0; i < require('os').cpus().length; ++i) {
@@ -18,7 +20,7 @@ if (cluster.isMaster) {
     cluster.fork()
   })
 } else {
-  console.log(`--> Worker PID: ${process.pid}`)
+  if (process.env.NODE_ENV !== 'production') console.log(`--> Worker PID: ${process.pid}`)
 
   // Setting up default cors
   app.use(require('cors')())

@@ -1,30 +1,30 @@
 # Cygni Hemuppgift
 
-Express server in the backend, fetching artist data fom MusicBrainz via api route's MBID parameters. Fetching additional data from Wikipedia and album images from CoverArtArchive.
-
-React SPA in the frontend, served by Express in Production. Displaying results and saving search history in localStorage to avoid to unnecessary requests.
+Express server fetching artist data from CoverArtArchive, MusicBrainz, Wikidata and Wipipedia.
 
 ## Setup
 
 Application requires Node.js.  
 Download latest stable verion here: **https://nodejs.org/en/download/**
 
+### .env
+
+PORT = 3000  
+HOST = "http://localhost"
+
 ### Installing dependencies
 
-From **root** folder.
+In **/**
 
-1. **npm install**
-1. **npm run client-install**
+`npm install`
 
 ### Run development server
 
-From **root** folder.
+In **/** folder.
 
 1. **npm run dev**
 
-Runs concrurrently server app and client app in dev mode.  
-Backend: **http://localhost:5000**  
-Frontend: **http://localhost:3000**  
+Server runs at **http://localhost:3000** (as default)
 
 ### Build client bundle and start production server
 
