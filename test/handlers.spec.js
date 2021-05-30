@@ -1,7 +1,8 @@
 require('dotenv').config()
-const host = `${process.env.HOST}:${process.env.PORT}`
 const expect = require('chai').expect
 const { httpRequest, httpResponse } = require('../lib/handlers')
+
+const host = `${process.env.HOST}:${process.env.PORT}`
 
 describe('/lib/handlers.js', () => {
   it(`httpRequest("${host}/api") expect to return { data > status, pid, project }`, async () => {
