@@ -14,27 +14,25 @@ HOST = "http://localhost"
 
 ### Installing dependencies
 
-In **/**
+In **./** folder:
 
 `npm install`
 
 ### Run development server
 
-In **/** folder.
+In **/** folder:
 
-1. **npm run dev**
+`npm run dev`
 
 Server runs at **http://localhost:3000** (as default)
 
 ### Build client bundle and start production server
 
-From **root** folder.
+In **./** folder:
 
-1. **npm run build**
-1. **npm start**
+`npm start`
 
-Runs server.  
-Server app serves client bundle at **http://localhost:5000**.
+Server runs at **http://localhost:3000** (as default)
 
 ## API endpoints
 
