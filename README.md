@@ -26,7 +26,7 @@ In **/** folder:
 
 Server runs at **http://localhost:3000** (as default)
 
-### Build client bundle and start production server
+### Start production server
 
 In **./** folder:
 
