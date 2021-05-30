@@ -16,7 +16,7 @@ HOST = "http://localhost"
 
 `npm install`
 
-#### Run Unit Test's
+#### Run unit tests
 
 `npm run test`
 
