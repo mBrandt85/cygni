@@ -8,7 +8,7 @@ const {
 
 describe('/lib/api-data.js', () => {
   it('getCoverArtArchiveById("f1afec0b-26dd-3db5-9aa1-c91229a74a24") expect { data > images }', async () => {
-    // Nirvana album Bleach id f1afec0b-26dd-3db5-9aa1-c91229a74a24
+    // Nirvana album Bleach "f1afec0b-26dd-3db5-9aa1-c91229a74a24"
     const id = 'f1afec0b-26dd-3db5-9aa1-c91229a74a24'
     const res = await getCoverArtArchiveById(id) 
     expect(res.data.images).to.be.ok
@@ -21,7 +21,7 @@ describe('/lib/api-data.js', () => {
 
   it('getMusicBrainzById("5b11f4ce-a62d-471e-81fc-a69a8278c7da") expect id to equal { data > id }', async () => {
     // With valid MusicBrainz ID
-    // Nirvana: 5b11f4ce-a62d-471e-81fc-a69a8278c7da 
+    // Nirvana: "5b11f4ce-a62d-471e-81fc-a69a8278c7da" 
     const id = '5b11f4ce-a62d-471e-81fc-a69a8278c7da'
     const res = await getMusicBrainzById(id)
     expect(res.data.id).to.equal(id)
@@ -34,7 +34,7 @@ describe('/lib/api-data.js', () => {
 
   it('getWikidataById("Q11649") expect id to equal Object.key { data > entities > Q11649 }', async () => {
     // With valid Wikidata ID
-    // Nirvana: Q11649
+    // Nirvana: "Q11649"
     const id = 'Q11649'
     const res = await getWikidataById(id)
     expect(res.data.entities).to.have.keys(id)
@@ -48,7 +48,7 @@ describe('/lib/api-data.js', () => {
 
   it('getWikipediaById("21231") expect { data > query > pages > "21231" > ... }', async () => {
     // With valid URL Encoded Wikipedia ID
-    // Nirvana EN site: Nirvana%20(band)
+    // Nirvana EN site: "Nirvana%20(band)"
     // Return object with key "21231"
     const res = await getWikipediaById('Nirvana%20(band)')
     expect(res.data.query.pages).to.have.keys('21231')

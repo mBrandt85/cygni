@@ -38,17 +38,18 @@ module.exports = {
       // Filter out all "primary-type" is equal to "Album"
       .filter(({ ['primary-type']: type }) => type === 'Album')
       // Sort desc by first-release-date
-      .sort((a, b) => a['first-release-date'] - b['first-release-date'])
+      .sort((a, b) => new Date(a['first-release-date']).toISOString() > new Date(b['first-release-date']).toISOString() ? 1 : -1)
       // Map each album
       .map(async ({ id, title }) => {
         // Fallback value if fetching fails
         let image = null
 
         // Fetching Front album cover url from Cover Art Archive
+        // { error } is available if image url not fetched, null is fallback value
         const { data } = await getCoverArtArchiveById(id)
         if (data) {
           const images = data.images.filter(({ front }) => front)
-          image = images[0] ? images[0].image : null
+          image = images[0] && images[0].image
         }
 
         return {

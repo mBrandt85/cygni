@@ -10,7 +10,7 @@ describe('/lib/handlers.js', () => {
     expect(res.data).to.have.keys(['status', 'pid', 'project'])
   })
 
-  it(`httpRequest("${host}/inval-id") expect to return { error }`, async () => {
+  it(`httpRequest("${host}/invalid-params") expect to return { error }`, async () => {
     // Endpoint to this API for dummy data object
     const res = await httpRequest(`${host}/api/invalid-endpoint`)
     expect(res.error).to.be.ok
