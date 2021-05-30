@@ -4,22 +4,24 @@
   "description": "BackendMashup",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=production node index.js",
-    "build": "npm run build --prefix client",
-    "client-install": "npm install --prefix client",
-    "dev": "concurrently \"nodemon .\" \"npm run dev --prefix client\""
+    "dev": "nodemon",
+    "start": "node",
+    "test": "mocha --timeout 5000"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^6.1.0",
     "cors": "^2.8.5",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "concurrently": "^6.1.0",
+    "mocha": "^8.4.0",
     "nodemon": "^2.0.7"
   }
 }

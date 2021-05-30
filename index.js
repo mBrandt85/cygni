@@ -2,7 +2,7 @@ require('dotenv').config()
 const cluster = require('cluster')
 const path = require('path')
 const express = require('express')
-const app = express()
+const app = module.export = express()
 
 if (cluster.isMaster) {
   console.log(`Master PID: ${process.pid}`)
@@ -14,12 +14,6 @@ if (cluster.isMaster) {
   app.use(require('cors')())
   app.use(express.json())
   app.use(express.urlencoded({ extended: false }))
-  app.use('/api', require('./routes'))
-
-  if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/dist'))
-    app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html')))
-  }
-
+  app.use('/', require('./routes'))
   app.listen(process.env.PORT)
 }

@@ -1,16 +1,11 @@
+const path = require('path')
 const router = require('express').Router()
+const api = require('./api')
 
-const artist = require('./artist')
+// API routes
+router.use('/api', api)
 
-router.get('/', async (req, res) => {
-  res.status(200).json({
-    status: 200,
-    process: process.pid,
-    error: null,
-    data: 'Cygni'
-  })
-})
-
-router.get('/artist/:id', artist.getByID)
+// Client route
+router.get('/', async (req, res) => res.sendFile(path.join(__dirname, 'index.html')))
 
 module.exports = router
