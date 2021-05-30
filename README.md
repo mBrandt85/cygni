@@ -40,4 +40,4 @@ Server runs at **http://localhost:3000** (as default)
 
 App runs with Node.js built in Cluster module. 
 
-For more scalability options, setup load balancing in e.g. Nginx or PM2 (Linux). Maybe the most important, upgrade server plan.
+For more scalability options, setup PM2 load balancing and/or horizontal scaling in Nginx. Maybe the most important, upgrade server plan.
