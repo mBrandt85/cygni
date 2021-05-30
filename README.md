@@ -20,7 +20,7 @@ HOST = "http://localhost"
 
 `npm run test`
 
-#### Run development server
+#### Run development server (live-reload)
 
 `npm run dev`
 
