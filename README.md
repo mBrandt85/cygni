@@ -12,23 +12,21 @@ Download latest stable verion here: **https://nodejs.org/en/download/**
 PORT = 3000  
 HOST = "http://localhost"
 
-### Installing dependencies
-
-In **./** folder:
+#### Installing dependencies
 
 `npm install`
 
-### Run development server
+#### Run Unit Test's
 
-In **/** folder:
+`npm run test`
+
+#### Run development server
 
 `npm run dev`
 
 Server runs at **http://localhost:3000** (as default)
 
-### Start production server
-
-In **./** folder:
+#### Start production server
 
 `npm start`
 
