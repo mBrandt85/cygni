@@ -8,21 +8,22 @@ const {
 module.exports = {
   // Return { mbid, name, description, albums } or error
   getById: async ({ params: { id }}, res) => {
-     // Fetch artist JSON data from MusicBrainz with MBID
-    const artist = await getMusicBrainzById(id)
-    if (artist.error) return res.status(artist.error.status).json({ ...artist.error })
+     // Fetch musicbrainz JSON data from MusicBrainz with MBID
+    const musicbrainz = await getMusicBrainzById(id)
+    if (musicbrainz.error) return res.status(musicbrainz.error.status).json({ ...musicbrainz.error })
 
     // Get Wikidata ID from MusicBrainz object
-    const wikidataId = artist.data.relations.filter(({ type }) => type === 'wikidata')[0].url.resource.split('/').pop()
+    const wikidataId = musicbrainz.data.relations.filter(({ type }) => type === 'wikidata')[0].url.resource.split('/').pop()
 
     // Get Wikidata from MusicBrainz object
+    // error object available
     const wikidata = await getWikidataById(wikidataId)
 
     // Set description to null as default, overwrite if Wikipedia fetch is successful
     let description = null
 
     // Get description from Wikipedia if Wikidata fetch is successful
-    if (!wikidata.data.error) {
+    if (wikidata.data) {
       // Grab Wikipedia ID (EN) from Wikidata and URI encode it
       const wikipediaId = encodeURI(wikidata.data.entities[wikidataId].sitelinks.enwiki.title)
       
@@ -34,7 +35,7 @@ module.exports = {
     }
 
     // Get albums array, fetch album cover url from Cover Art Archive for each album asynchronously with Promise.all method.
-    const albums = await Promise.all(artist.data['release-groups']
+    const albums = await Promise.all(musicbrainz.data['release-groups']
       // Filter out all "primary-type" is equal to "Album"
       .filter(({ ['primary-type']: type }) => type === 'Album')
       // Sort  array in ASC by first-release-date
@@ -63,7 +64,7 @@ module.exports = {
     // JSON response
     res.status(200).json({
       mbid: id,
-      name: artist.data.name,
+      name: musicbrainz.data.name,
       description,
       albums
     })

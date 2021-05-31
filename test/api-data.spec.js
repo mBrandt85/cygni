@@ -43,7 +43,7 @@ describe('/lib/api-data.js', () => {
   it('getWikidataById("inval-id") expect to return { data > error }', async () => {
     // Return status 200
     const res = await getWikidataById('inval-id')
-    expect(res.data.error).to.be.ok
+    expect(res.error).to.be.ok
   })
 
   it('getWikipediaById("21231") expect { data > query > pages > "21231" > ... }', async () => {
@@ -57,6 +57,6 @@ describe('/lib/api-data.js', () => {
   it('getWikipediaById("inval-id") expect { data > query > pages > "-1" > ... }', async () => {
     // Return status 200
     const res = await getWikipediaById('inval-id')
-    expect(res.data.query.pages).to.have.keys('-1')
+    expect(res.error).to.be.ok
   })
 })
