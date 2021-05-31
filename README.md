@@ -16,7 +16,7 @@ HOST = "http://localhost"
 
 `npm install`
 
-##### Installing production only dependencies
+##### Install only production dependencies
 
 `npm install --only=prod`
 
@@ -30,7 +30,7 @@ Server runs at **http://localhost:3000** (as default)
 
 `npm run test`
 
-*Server needs to run for testing!*
+*Server needs to run and devDependencies are required for testing!*
 
 #### Start production server
 
