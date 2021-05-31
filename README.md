@@ -36,7 +36,10 @@ Server runs at **http://localhost:3000** (as default)
 
 ## API endpoints
 
-**http://localhost:5000/api/artist/:id** (**:id** = Valid MBID!)
+**http://localhost:3000/api/artist/:id** (**:id** = Valid MBID!)
+
+Nirvana Example:  
+**http://localhost:3000/api/artist/5b11f4ce-a62d-471e-81fc-a69a8278c7da**
 
 ## Scalability
 
