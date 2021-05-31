@@ -37,7 +37,7 @@ module.exports = {
     const albums = await Promise.all(artist.data['release-groups']
       // Filter out all "primary-type" is equal to "Album"
       .filter(({ ['primary-type']: type }) => type === 'Album')
-      // Sort desc by first-release-date
+      // Sort  array in ASC by first-release-date
       .sort((a, b) => new Date(a['first-release-date']).toISOString() > new Date(b['first-release-date']).toISOString() ? 1 : -1)
       // Map each album
       .map(async ({ id, title }) => {
