@@ -16,6 +16,10 @@ HOST = "http://localhost"
 
 `npm install`
 
+##### Installing production only dependencies
+
+`npm install --only=prod`
+
 #### Run development server (live-reload)
 
 `npm run dev`
