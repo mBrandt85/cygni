@@ -12,29 +12,27 @@ Download latest stable verion here: **https://nodejs.org/en/download/**
 PORT = 3000  
 HOST = "http://localhost"
 
-### Installing dependencies
-
-In **/**
+#### Installing dependencies
 
 `npm install`
 
-### Run development server
+#### Run development server (live-reload)
 
-In **/** folder.
-
-1. **npm run dev**
+`npm run dev`
 
 Server runs at **http://localhost:3000** (as default)
 
-### Build client bundle and start production server
+#### Run unit tests
 
-From **root** folder.
+`npm run test`
 
-1. **npm run build**
-1. **npm start**
+*Server needs to run for testing!*
 
-Runs server.  
-Server app serves client bundle at **http://localhost:5000**.
+#### Start production server
+
+`npm start`
+
+Server runs at **http://localhost:3000** (as default)
 
 ## API endpoints
 
@@ -44,4 +42,4 @@ Server app serves client bundle at **http://localhost:5000**.
 
 App runs with Node.js built in Cluster module. 
 
-For more scalability options, setup load balancing in e.g. Nginx or PM2 (Linux). Maybe the most important, upgrade server plan.
+For more scalability options, setup PM2 load balancing and/or horizontal scaling in Nginx. Maybe the most important, upgrade server plan.
